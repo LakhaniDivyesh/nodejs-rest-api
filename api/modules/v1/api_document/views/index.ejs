@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= GLOBALS.APP_NAME %></title>
+	<link rel="shortcut icon" href="http://localhost/company_projects/eassyserve/api/public/images/icons/favicon.png">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+	<link rel="shortcut icon" href="<%= GLOBALS.BASE_URL_WITHOUT_API + GLOBALS.LOGO%>">
+	<title><%= GLOBALS.APP_NAME %> API</title> 
+</head>
+<div role="navigation" class="navbar navbar-default navbar-static-top">
+	<div class="container">
+	  <div class="navbar-header">
+		<a href="#" class="navbar-brand"><%= GLOBALS.APP_NAME %></a>
+	  </div>
+	</div>
+  </div>	
+<body>
+  	<div class="container" style="min-height:500px;">
+		<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                   
+			<div class="panel panel-info" >
+				<div class="panel-heading">
+					<div class="panel-title">Sign In</div>
+				</div>    
+				<div style="padding-top:30px" class="panel-body" >
+					<% if (message.length > 0) { %>
+					<div class="alert alert-danger col-sm-12"><%= message %></div>
+					<% } %>
+					<form id="loginform" class="form-horizontal" role="form" method="post" action="/v1/api_document/login">
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+						</div>
+						<div style="margin-top:10px" class="form-group">						
+							<div class="col-sm-12 controls">
+								<button id="btn-login" type="submit" class="btn btn-success">Login</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+</body>
+</html>

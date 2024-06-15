@@ -1,0 +1,1024 @@
+{
+	"info": {
+		"_postman_id": "b2da5192-b6cf-4c2c-8eb2-a594902e4aea",
+		"name": "05-04-2024_raaves",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33679288"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"login_type\" : \"F\",\r\n    // \"social_id\" : \"1220000000000000\",\r\n    \"emailphone\" : \"vatsal@gmail.com\",\r\n    \"password\" : \"Vatsal@1033\",\r\n    \"device_type\": \"Android\",\r\n    \"device_token\": \"gaha22j33\",\r\n    \"uuid\": \"\",\r\n    \"os_version\": \"12\",\r\n    \"device_name\": \"sssasas\",\r\n    \"model_name\": \"bjsdhsgdhsg\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}login",
+							"host": [
+								"{{base_url}}{{auth}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"social_id\" : \"12200000\",\r\n    // \"login_type\": \"A\",\r\n    \"email\" : \"vatsalall@gil.com\",\r\n    \"country_code\" : \"+91\",\r\n    \"mobile_number\" : \"7110185027\",\r\n    \"password\" : \"Vatsal@10\",\r\n    \"device_type\": \"Android\",\r\n    \"device_token\": \"3656565\",\r\n    \"uuid\": \"12817291\",\r\n    \"os_version\": \"281972817\",\r\n    \"device_name\": \"1291728162\",\r\n    \"model_name\": \"38228392\",\r\n    \"ip\": \"38q7w8q7w\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}signup",
+							"host": [
+								"{{base_url}}{{auth}}signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyOTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailphone\" : \"vatsalall@gil.com\",\r\n    \"otp\" : \"2287\",\r\n    \"device_type\": \"Android\",\r\n    \"device_token\": \"gaha22j33\",\r\n    \"uuid\": \"\",\r\n    \"os_version\": \"12\",\r\n    \"device_name\": \"sssasas\",\r\n    \"model_name\": \"bjsdhsgdhsg\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}verifyOTP",
+							"host": [
+								"{{base_url}}{{auth}}verifyOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resendOTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailphone\" : \"vatsal@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}resendOTP",
+							"host": [
+								"{{base_url}}{{auth}}resendOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set_profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "896Wuxx9RpDU9tL",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\" : \"Vatsal\",\r\n    \"last_name\" : \"Patel\",\r\n    \"username\" : \"VAstal\",\r\n    \"dob\" : \"2024-03-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}set_profile",
+							"host": [
+								"{{base_url}}{{auth}}set_profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget_password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailphone\" : \"9876543210\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}forget_password",
+							"host": [
+								"{{base_url}}{{auth}}forget_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "iRkNHkL3rFU9lvA",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"Vatsal@1033\",\r\n    \"new_password\" : \"Vatsal@10\",\r\n    \"confirm_password\" : \"Vatsal@10\",\r\n    \"device_type\": \"Android\",\r\n    \"device_token\": \"gaha22j33\",\r\n    \"uuid\": \"\",\r\n    \"os_version\": \"12\",\r\n    \"device_name\": \"sssasas\",\r\n    \"model_name\": \"bjsdhsgdhsg\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}change_password",
+							"host": [
+								"{{base_url}}{{auth}}change_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set_password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "wTyuFtsdBjbFu2w",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"Vatsal@1033\",\r\n    \"confirm_password\" : \"Vatsal@1033\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{auth}}set_password",
+							"host": [
+								"{{base_url}}{{auth}}set_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "aJXthV9CNeT1Jw6",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{auth}}logout",
+							"host": [
+								"{{base_url}}{{auth}}logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "home",
+			"item": [
+				{
+					"name": "user_details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}user_details",
+							"host": [
+								"{{base_url}}{{home}}user_details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new_raaves",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"my_raaves\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}raaves_listing",
+							"host": [
+								"{{base_url}}{{home}}raaves_listing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "most_raaved",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}most_raaved",
+							"host": [
+								"{{base_url}}{{home}}most_raaved"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"User\",\r\n    \"search\" : \"st\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}search",
+							"host": [
+								"{{base_url}}{{home}}search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contact_us",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\" : \"Vatsal\",\r\n    \"last_name\" : \"Patel\",\r\n    \"email\" : \"vatsal@gmail.com\",\r\n    \"subject\" : \"Contact 2\",\r\n    \"description\" : \"Problem\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}contact_us",
+							"host": [
+								"{{base_url}}{{home}}contact_us"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notification",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}notification",
+							"host": [
+								"{{base_url}}{{home}}notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "favourite_business",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}favourite_business",
+							"host": [
+								"{{base_url}}{{home}}favourite_business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business_details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"business_id\" : \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}business_details",
+							"host": [
+								"{{base_url}}{{home}}business_details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"business_id\" : \"2\",\r\n    \"liked_service\" : \"1,2,3\",\r\n    \"rating\" : \"3\",\r\n    \"review\" : \"Good\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}add_review",
+							"host": [
+								"{{base_url}}{{home}}add_review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "report_review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"review_id\" : \"1\",\r\n    \"type\" : \"1\",\r\n    \"description\" : \"Bad review\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}report_review",
+							"host": [
+								"{{base_url}}{{home}}report_review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"review_id\" : \"1\",\r\n    \"liked_service\" : \"1,2\",\r\n    \"rating\" : \"2\",\r\n    \"review\" : \"Nice\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}edit_review",
+							"host": [
+								"{{base_url}}{{home}}edit_review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "other_profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : \"11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}other_profile",
+							"host": [
+								"{{base_url}}{{home}}other_profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "following_list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}following_list",
+							"host": [
+								"{{base_url}}{{home}}following_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follower_list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}follower_list",
+							"host": [
+								"{{base_url}}{{home}}follower_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follow_unfollow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}follow_unfollow",
+							"host": [
+								"{{base_url}}{{home}}follow_unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{home}}profile",
+							"host": [
+								"{{base_url}}{{home}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "like_review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"review_id\" : \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}like_review",
+							"host": [
+								"{{base_url}}{{home}}like_review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "like_business",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"business_id\" : \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}like_business",
+							"host": [
+								"{{base_url}}{{home}}like_business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "RAAVES05042024",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "hPvt428wy0Qbn4z",
+								"type": "text"
+							},
+							{
+								"key": "accept_language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{home}}block",
+							"host": [
+								"{{base_url}}{{home}}block"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

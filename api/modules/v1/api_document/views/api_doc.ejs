@@ -1,0 +1,436 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"> 
+	<link href="https://unpkg.com/vuetify@1.0.17/dist/vuetify.min.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
+	<link rel="shortcut icon" href="<%= GLOBALS.BASE_URL_WITHOUT_API + GLOBALS.LOGO%>">
+	<title><%= GLOBALS.APP_NAME %> API LIST</title> 
+	<style type="text/css">
+		.medium-text{
+			font-size: 18px;
+			color:white;
+		}
+		.js div#preloader{ 
+			position: fixed; 
+			left: 0; 
+			top: 0; 
+			z-index: 999; 
+			width: 100%; 
+			height: 100%; 
+			overflow: visible; 
+			background: #fff url('<%= GLOBALS.BASE_URL_WITHOUT_API %>api/public/logo/ripple.gif') no-repeat center center; 
+		}
+	</style>
+	</head>
+	<body class="js">
+		<div id="preloader"></div>
+		<div id="app">
+			<v-app id="inspire">
+				<v-layout justify column>
+					<v-flex style="margin:10px auto 10px auto; padding:0px; text-align:center;" center right sm2 xs2 md2 lg2 xl2>
+						<img src='<%= GLOBALS.BASE_URL_WITHOUT_API + "api/public/app_icon.png" %>' width="120px"><br>
+						<strong style="font-size:24px;"><%= GLOBALS.APP_NAME %> API LIST</strong><br><br>
+						<v-alert :value="true" outline color="white" style="padding:5px;">
+							<v-chip color="black" text-color="white">
+								<v-avatar>
+									<v-icon>bookmark</v-icon>
+								</v-avatar><b>TOTAL {{messages.length}} APIs</b>
+							</v-chip>
+						</v-alert>
+						<v-alert :value="true" outline color="white" style="padding:5px;">
+							<v-chip color="black" text-color="white">
+								<v-avatar>
+									<v-icon>label_important</v-icon>
+								</v-avatar><b>If Device Token not get, pass 0 only</b>
+							</v-chip>
+							<v-chip color="black" text-color="white">
+								<v-avatar>
+									<v-icon>label_important</v-icon>
+								</v-avatar><b>Upload images on S3 bucket</b>
+							</v-chip>
+						</v-alert>
+					</v-flex>
+					<v-flex style="margin:0px auto; padding:0px;" center right sm2 xs2 md2 lg2 xl2>
+					
+					  	<div id="main1" style="margin:0px auto; position:sticky;">
+						    <table border="0" cellpadding="10" cellspacing="10"  width="100%" style="background: linear-gradient(150deg, #121213 50%, #1a1c27) !important;color: #fff;font-weight: bold;">
+							    <tr>
+				              		<td><b>Server URL </b></td>
+				              		<td><img src='<%= GLOBALS.BASE_URL_WITHOUT_API+ "api/public/arrow-right.gif" %>' width="40px">&nbsp;&nbsp;<b ><%= GLOBALS.PORT_BASE_URL %>api/v1/</b></td>
+					   	  		</tr>
+					   	  		<tr>
+				              		<td><b>Header Parameters </b></td>
+				              		<td><img src='<%= GLOBALS.BASE_URL_WITHOUT_API+ "api/public/arrow-right.gif" %>' width="40px">&nbsp;&nbsp;<b >API-KEY, TOKEN, accept-language</b></td>
+					   	  		</tr>
+						   	    <tr>
+					              <td><b>API-KEY </b></td>
+					              <td><img src='<%= GLOBALS.BASE_URL_WITHOUT_API+ "api/public/arrow-right.gif" %>' width="40px">&nbsp;&nbsp;<b ><%= process.env.API_KEY %></b></td>
+						   	    </tr>
+						   	    <tr>
+					              <td><b>KEY </b></td>
+					              <td><img src='<%= GLOBALS.BASE_URL_WITHOUT_API+ "api/public/arrow-right.gif" %>' width="40px">&nbsp;&nbsp;<b><%= process.env.KEY %></b></td>
+						   	    </tr>
+						   	    <tr>
+					              <td><b>IV </b></td>
+					              <td><img src='<%= GLOBALS.BASE_URL_WITHOUT_API+ "api/public/arrow-right.gif" %>' width="40px">&nbsp;&nbsp;<b><%= process.env.IV %></b></td>
+						   	    </tr>
+						    </table>
+							<br> <br>
+						</div>
+					</v-flex>
+					<v-flex style="margin:0px auto;" center right sm2 xs2 md2 lg2 xl2>
+						<a target="_blank" href='/v1/api_document/user_list'>
+							<v-btn color="blue-grey" class="white--text">
+								USER LIST <v-icon right dark>people</v-icon>
+							</v-btn>
+						</a>
+						<a target="_blank" href='/v1/api_document/code'>
+							<v-btn color="blue-grey" class="white--text">
+								CODE REFERENCE <v-icon right dark>code</v-icon>
+							</v-btn>
+						</a>	
+						<a target="_blank" href='<%= GLOBALS.BASE_URL %>enc_dec.php'>
+							<v-btn color="blue-grey" class="white--text">
+								ENCRYPTION URL <v-icon right dark>lock</v-icon>
+							</v-btn>
+						</a>	
+					</v-flex>
+					
+					<v-expansion-panel popout>
+						<v-expansion-panel-content v-for="(message, i) in messages" :key="i" hide-actions>
+							<v-layout slot="header" align-center row spacer>
+								<v-flex sm1 xs1 md1 lg1 xl1>
+									<v-avatar slot="activator" size="36px">
+										<v-icon :color="message.color">{{ message.icon }}</v-icon>
+									</v-avatar>
+								</v-flex>
+								<v-flex sm3 xs3 md3 lg3 xl3>
+									<strong v-html="message.title"></strong>
+									<v-chip v-if="message.meth" :color="`${message.color} lighten-4`" label small class="ml-0">
+										{{ message.meth }}
+									</v-chip>
+								</v-flex>
+								<v-flex sm3 xs3 md3 lg3 xl3>
+									<strong v-html="message.name"></strong><br>
+									<span v-if="message.updated" style="color:orange">{{ message.updated }}</span>
+									<span v-if="message.new_added" style="color:green"><span v-html="message.new_added"></span></span>
+								</v-flex>
+								<v-flex sm4 xs4 md4 lg4 xl4>
+									<v-flex v-if="message.link" class="grey--text" ellipsis hidden-sm-and-down>
+										{{ message.link }}
+									</v-flex>
+									<v-flex class="grey--text" ellipsis hidden-sm-and-down>
+										<span v-if="message.imp" style="color:darkred">SHOW IMPORTANT NOTE INSIDE</span>
+									</v-flex>
+								</v-flex>	
+							</v-layout>
+							<v-card dark>
+								<v-container>
+									<v-layout v-if="message.new_tag === '0'">
+										<v-flex xs12 align-end flexbox>
+											<v-alert v-if="message.new_added" :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="green" text-color="white">
+													<v-avatar>
+														<v-icon>fiber_new</v-icon>
+													</v-avatar> NEW
+												</v-chip>
+												<span v-html="message.new_added"></span>
+											</v-alert>
+											<v-alert v-if="message.updated" :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="orange" text-color="white">
+													<v-avatar>
+														<v-icon>update</v-icon>
+													</v-avatar> UPDATED
+												</v-chip>
+												<span>{{ message.updated }}</span>
+											</v-alert>
+											<v-alert :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="teal" text-color="white">
+													<v-avatar>
+														<v-icon>check_circle</v-icon>
+													</v-avatar> MANDATORY
+												</v-chip>
+												{{message.mandatory}}
+											</v-alert>
+											<v-alert :value="true" outline color="white" style="padding:5px;">
+												<v-chip outline color="#F0F4C3">
+													<v-avatar>
+														<v-icon>check_circle</v-icon>
+													</v-avatar>OPTIONAL
+												</v-chip>
+												<span>{{ message.optional }}
+											</v-alert>
+											<v-alert v-if="message.link" :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="light-green darken-2" text-color="white">
+													<v-avatar>
+														<v-icon>link</v-icon>
+													</v-avatar> LINK
+												</v-chip>
+												<span>{{ message.link }}
+											</v-alert>
+											<v-alert v-if="message.imp" :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="red darken-2" text-color="white">
+													<v-avatar>
+														<v-icon>new_releases</v-icon>
+													</v-avatar> IMPORTANT
+												</v-chip>
+												<p v-html="message.imp"></p>
+											</v-alert>
+											<v-alert v-if="message.notes" :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="blue lighten-1" text-color="white">
+													<v-avatar>
+														<v-icon>bookmark</v-icon>
+													</v-avatar> NOTES
+												</v-chip>
+												<span>{{ message.notes }}
+											</v-alert>
+											<v-alert v-if="message.example" :value="true" outline color="white" style="padding:5px;">
+												<v-chip color="red darken-2" text-color="white">
+													<v-avatar>
+														<v-icon>check_circle</v-icon>
+													</v-avatar> EXAMPLE
+												</v-chip>
+												<p v-html="message.example"></p>
+											</v-alert>
+											<v-layout style="margin-top:-4px">
+												<v-flex xs6 align-end flexbox>
+													<v-alert :value="true" outline color="yellow" icon="priority_high" style="padding:5px;">
+															<span class="grey--text">HEADER : {{ message.is_header }}, PUSH : {{ message.is_push }}</span><br>
+															<span>HEADER : {{ message.header }}</span>
+													</v-alert>
+												</v-flex>
+												<v-flex xs6 align-end flexbox>
+													<v-alert style="margin-left:4px; padding:5px;" :value="true" outline color="yellow" icon="priority_high">
+														STATUS : <span v-html="message.status"></span>
+													</v-alert>
+												</v-flex>
+											</v-layout>		
+										</v-flex>
+									</v-layout>
+								</v-container>
+								<v-card-actions>
+								</v-card-actions>
+							</v-card>
+						</v-expansion-panel-content>
+					</v-expansion-panel>
+				</v-layout>
+			</v-app>
+		</div>
+		<div id="asd"></div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<script src="https://unpkg.com/vuetify@1.0.17/dist/vuetify.min.js"></script>
+		<script src="https://unpkg.com/babel-polyfill/dist/polyfill.min.js"></script>
+		<script>
+
+			jQuery(document).ready(function($) {  
+				$('#preloader').fadeOut('slow',function(){$(this).remove();});
+			});
+			
+			var base_url = "<%= GLOBALS.PORT_BASE_URL %>api/v1/";
+			var base_url_without_api = "<%= GLOBALS.BASE_URL_WITHOUT_API %>";
+			let i = 1;
+			
+			new Vue({
+				el: '#app',
+				data: () => ({
+					messages: [
+						{
+							new_tag: '1',
+							color: 'blue',
+							title: 'Auth API',
+							icon: 'person',
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Signup',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/signup",
+							mandatory: "(login_type[S]country_code,mobile_number,email,password) || (login_type[F,G,I],social_id)",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, accept_language",
+							notes: "This api is used to SIGNUP",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 4",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'OTP Verification',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/verifyOTP",
+							mandatory: "emailphone(email or mobile_number), otp",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, accept_language",
+							notes: "This api is used to verify OTP after signup or forget password",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Resend OTP',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/resendOTP",
+							mandatory: "emailphone(email or mobile_number)",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, accept_language",
+							notes: "This api is used to verify OTP after signup or forget password",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Set Profile',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/set_profile",
+							mandatory: "first_name,last_name,username,dob",
+	                        optional: "profile_image,cover_image",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, token, accept_language",
+							notes: "This api is used to set profile of user",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Login',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/login",
+							mandatory: "(login_type[S],emailphone(email or mobile_number),password) || (login_type[F,G,I],social_id)",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, accept_language",
+							notes: "This api is used to login",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1 <br>2. HTTP_OK[200] - code : 4 <br>2. HTTP_OK[200] - code : 5",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Forget Password',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/forget_password",
+							mandatory: "emailphone(email or mobile_number)",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, accept_language",
+							notes: "This api is used when user forget password to send otp and verify email and mobile number",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},	
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Set Password',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/set_password",
+							mandatory: "password,confirm_password",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, token, accept_language",
+							notes: "This api is used to set new password after forget password",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Change Password',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/change_password",
+							mandatory: "password,new_password,confirm_password",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, token, accept_language",
+							notes: "This api is used to set new password",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'Logout',
+							meth: 'POST',
+							link: "<%= GLOBALS.PORT_BASE_URL %>auth/logout",
+							mandatory: "",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, token, accept_language",
+							notes: "This api is used to logout",
+							example:'',
+							status: "<br>1. HTTP_OK[401] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+							imp: "Checking",
+						},
+						{
+							new_tag: '1',
+							color: 'orange',
+							title: 'Home API',
+							icon: 'home',
+						},
+						{
+							new_tag: '0',
+							color: 'blue',
+							icon: 'person',
+							title: i++ + ' : Auth',
+							name: 'User Details',
+							meth: 'GET',
+							link: "<%= GLOBALS.PORT_BASE_URL %>home/user_details",
+							mandatory: "",
+	                        optional: "",
+							is_header: "YES",
+							is_push: "NO",
+							header: "api_key, token, accept_language",
+							notes: "This api is used to listing details of user",
+							example:'',
+							status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[401] - code : 1 ",
+							imp: "Checking",
+						},
+					]	
+				})
+			})	
+		</script>
+	</body>
+</html>

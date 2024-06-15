@@ -1,0 +1,52 @@
+
+{
+"emailphone" : "vatsal@gmail.com",
+"password" : "Vatsal@1033",
+"device_type": "Android",
+"device_token": "gaha22j33",
+"uuid": "",
+"os_version": "12",
+"device_name": "sssasas",
+"model_name": "bjsdhsgdhsg",
+"ip": "127.0.0.1"
+}
+
+
+
+
+{
+    // "social_id" : "12200000",
+    // "login_type": "A",
+    "email" : "vatsalall@gil.com",
+    "country_code" : "+91",
+    "mobile_number" : "7110185027",
+    "password" : "Vatsal@10",
+    "device_type": "Android",
+    "device_token": "3656565",
+    "uuid": "12817291",
+    "os_version": "281972817",
+    "device_name": "1291728162",
+    "model_name": "38228392",
+    "ip": "38q7w8q7w"    
+}
+
+
+{
+    "emailphone" : "divyesh@gmail.com",
+    "otp" : "4807",
+    "device_type": "Android",
+    "device_token": "gaha22j33",
+    "uuid": "",
+    "os_version": "12",
+    "device_name": "sssasas",
+    "model_name": "bjsdhsgdhsg",
+    "ip": "127.0.0.1"
+}
+
+
+{
+    "first_name" : "Divyesh",
+    "last_name" : "Lakhnai",
+    "username" : "dl@12",
+    "dob" : "2002-03-10"
+}

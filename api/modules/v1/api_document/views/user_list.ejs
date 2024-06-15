@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="<%= GLOBALS.BASE_URL_WITHOUT_API%>/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="<%= GLOBALS.BASE_URL_WITHOUT_API+GLOBALS.LOGO %>">
+
+    <style type="text/css">
+        
+        body
+        {
+            font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
+            padding: 10px;
+        }
+        .header-title {
+            padding: 5px;
+            border-bottom: solid 1px;
+            background-color: #cf3246 ;
+            color: #fff;
+        }
+        th
+        {
+            padding: 5px;
+            border-bottom: solid 1px;
+            background-color: #EBEFF2;
+        }
+        td
+        {
+            border-right:solid 1px;
+            padding-bottom: 10px;   
+            padding-left: 5px;
+            padding-top: 10px;  
+        }
+        table{
+            border-left: solid 2px black;
+        }
+        tr
+        {
+            transition-duration: .5s;
+            border-bottom: 1px solid #bababa;
+        }
+        tr:hover
+        {
+            opacity: 10;            
+            box-shadow: 0px 0px 5px black;          
+            background-color: #EBEFF2;
+        }
+    </style>
+</head>
+<body>
+    
+    <table id="myTable" border="1" class="table"> 
+        <thead>
+        <tr style="background:linear-gradient(150deg, #0b0c0c 50%, #111214) !important;color: #fff">
+            <td colspan="15" align="center"><p style="font-size: 20px;"><b>User List</b></p></td>
+        </tr> 
+        <tr> 
+            <th>ID</th>
+            <th>Token</th>
+            <th>Device Type</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Phone</th>
+            <th>Login Status</th>
+            <th>Last Login</th>
+            <th>Device Token</th>
+            <th>Insert Datetime</th>
+        </tr> 
+        </thead>
+        <tbody>
+            <% if(data != null ) {
+            for (var i = 0; i < data.length; i++) { %>
+                <tr> 
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].token %></td>
+                    <td><%= data[i].device_type %></td>
+                    <td><%= data[i].first_name + " " + data[i].last_name%></td>
+                    <td><%= data[i].username %></td>
+                    <td><%= data[i].email %></td>
+                    <td><%= data[i].password %></td>
+                    <td><%= data[i].mobile_number %></td>
+                    <td><%= data[i].login_type %></td>
+                    <td><%= data[i].updated_at %></td>
+                    <td><%= data[i].device_token %></td>
+                    <td><%= data[i].created_at %></td>
+                </tr> 
+            <% } }%>
+        </tbody> 
+    </table> 
+     
+
+</body>
+</html>
+    
